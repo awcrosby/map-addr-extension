@@ -54,7 +54,7 @@ function mapViaGoogleMapsQuery(addresses) {
     // Limitation: with multiple addresses it attempts to display the first few addr via partial matches
     const encodedAddresses = encodeURIComponent(addresses);
     const URL = 'https://www.google.com/maps/search/?api=1&query=' + encodedAddresses;
-    chrome.tabs.create({url: URL});
+    browser.tabs.create({url: URL});
 }
 
 function mapLocalViaGoogleMapsApi(addresses) {
@@ -73,7 +73,7 @@ function onToolbarButtonClick(tab) {
         const token_count = Math.ceil(response.pageText.length / 4)
         console.log(`Token count for text: ${token_count}`);
         if (token_count > MAX_INPUT_TOKENS) {
-            throw new Error(`Text too long! ${token_count} exceeds maximum ${MAX_TOKENS}.}`);
+            throw new Error(`Text too long! ${token_count} exceeds maximum ${MAX_INPUT_TOKENS}.}`);
         }
         return response.pageText
     })
