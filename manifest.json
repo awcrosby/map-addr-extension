@@ -1,0 +1,46 @@
+{
+    "manifest_version": 2,
+    "name": "Find and Map Addresses",
+    "version": "1.0",
+    "description": "Send page text to ChatGPT to find addresses, and pin them on one map via Google Maps API.",
+
+    "icons": {
+        "48": "icons/maps-pin-48.png"
+    },
+
+    "browser_action": {
+        "default_icon": "icons/maps-pin-128.png",
+        "default_title": "Find and Map Addresses"
+    },
+
+    "permissions": ["activeTab", "tabs", "storage", "https://maps.googleapis.com/"],
+    
+    "content_security_policy": "script-src 'self' https://maps.googleapis.com; object-src 'self';",
+    
+    "web_accessible_resources": ["map-display.html"],
+
+    "options_ui": {
+        "page": "options/options.html"
+    },
+
+    "background": {
+        "scripts": [
+          "background.js"
+        ],
+        "persistent": true
+      },
+
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["content_script.js"]
+        }
+    ],
+
+    "browser_specific_settings": {
+        "gecko": {
+          "id": "find-and-map-addresses@awctech.com"
+        }
+    }
+}
+  
