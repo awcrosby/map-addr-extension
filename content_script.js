@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const addresses = urlParams.get('addresses');
     if (addresses) {
         localStorage.setItem('addresses', addresses);
-        console.log("addresses in DOMContentLoad:", addresses);
+        // console.log("addresses in DOMContentLoad:", addresses);
     }
 
     // add script tag to map-display.html that includes google maps api key
