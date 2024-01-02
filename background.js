@@ -1,6 +1,7 @@
 // to see background script logs, open about:debugging, click on Inspect for the extension
 
-const MAX_TOKENS = 10000;  // $0.0010 / 1K tokens for gpt-3.5-turbo-1106 input
+const MAX_INPUT_TOKENS = 10000;  // $0.0010 / 1K tokens for gpt-3.5-turbo-1106 input
+const MAX_OUTPUT_TOKENS = 4096;  // $0.0020 / 1K tokens for gpt-3.5-turbo-1106 input
 
 async function getOpenAiAddresses(htmlText) {
     const storageDataOpenai = await browser.storage.sync.get("openaikey");
@@ -14,7 +15,7 @@ async function getOpenAiAddresses(htmlText) {
 
     const data = {
         model: "gpt-3.5-turbo-1106",
-        max_tokens: 200,
+        max_tokens: MAX_OUTPUT_TOKENS,
         messages: [
             {
                 "role": "system",
@@ -67,7 +68,7 @@ function onToolbarButtonClick(tab) {
     .then(response => {
         const token_count = Math.ceil(response.pageText.length / 4)
         console.log(`Token count for text: ${token_count}`);
-        if (token_count > MAX_TOKENS) {
+        if (token_count > MAX_INPUT_TOKENS) {
             throw new Error(`Text too long! ${token_count} exceeds maximum ${MAX_TOKENS}.}`);
         }
         return response.pageText
