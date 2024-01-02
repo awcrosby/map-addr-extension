@@ -4,11 +4,11 @@
 
 ## Installation
 
-Currently this extension is temporarily loadable via Firefox, go to [about:debugging](about:debugging#/runtime/this-firefox), click "Load Temporary Add-On" and select any file like `manifest.json`.
+Currently this extension is temporarily loadable via Firefox, type `about:debugging` in the Firefox URL bar, click "Load Temporary Add-On" and select any file like `manifest.json`.
 
 ## Usage:
 
-1. Save your `OPENAI_API_KEY` and `GOOGLE_MAPS_API_KEY` in extension preferences: [about:addons](about:addons).
+1. Save your `OPENAI_API_KEY` and `GOOGLE_MAPS_API_KEY` in extension preferences via `about:addons`.
 2. Be on a website with one or more addresses.
 3. Click the extension toolbar icon ![icon](/images/maps-pin-16.png) ALL text on current tab is sent to ChatGPT to find addresses. A new tab is opened locally which sends those addresses to the Google Maps API and displays map pins for those able to be geocoded.
 
