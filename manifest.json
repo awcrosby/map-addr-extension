@@ -5,11 +5,11 @@
     "description": "Send page text to ChatGPT to find addresses, and pin them on one map via Google Maps API.",
 
     "icons": {
-        "48": "icons/maps-pin-48.png"
+        "48": "images/maps-pin-48.png"
     },
 
     "browser_action": {
-        "default_icon": "icons/maps-pin-128.png",
+        "default_icon": "images/maps-pin-128.png",
         "default_title": "Find and Map Addresses"
     },
 
