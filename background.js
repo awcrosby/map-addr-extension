@@ -49,12 +49,16 @@ async function getOpenAiAddresses(htmlText) {
     });
 }
 
-function pinSingleAddressTab(address) {
-    const URL = 'https://www.google.com/maps/search/?api=1&query=' + address;
+function mapViaGoogleMapsQuery(addresses) {
+    // Call Google Maps server to attempt to find address
+    // Limitation: with multiple addresses it attempts to display the first few addr via partial matches
+    const encodedAddresses = encodeURIComponent(addresses);
+    const URL = 'https://www.google.com/maps/search/?api=1&query=' + encodedAddresses;
     chrome.tabs.create({url: URL});
 }
 
-function pinManyAddressTab(addresses) {
+function mapLocalViaGoogleMapsApi(addresses) {
+    // Local tab included with extension calls Google Maps API to geocode addresses
     const encodedAddresses = encodeURIComponent(addresses);
     browser.tabs.create({url: browser.runtime.getURL(`map-display.html?addresses=${encodedAddresses}`)})
     .then(tab => {
@@ -77,7 +81,8 @@ function onToolbarButtonClick(tab) {
         return getOpenAiAddresses(text);
     })
     .then(addresses => {
-        pinManyAddressTab(addresses);
+        // mapViaGoogleMapsQuery(addresses);
+        mapLocalViaGoogleMapsApi(addresses);
     })
     .catch(error => console.error(error));
 }
