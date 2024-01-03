@@ -2,11 +2,13 @@
 **Find and Map Addresses** browser extension to send current tab's page text to ChatGPT to find addresses, and pin them on one map via Google Maps API.
 
 
-## Installation
+## Install in Firefox
 
-Currently this extension is temporarily loadable via Firefox, type `about:debugging` in the Firefox URL bar, click "Load Temporary Add-On" and select any file like `manifest.json`.
+To install, browse to the Mozilla-signed `.xpi` file under `web-ext-artifacts/`
 
-## Usage:
+You can also temporarily load the extension (until browser restarts), type `about:debugging` in the Firefox URL bar, click "Load Temporary Add-On" and select any file like `manifest.json`.
+
+## Usage
 
 1. Save your `OPENAI_API_KEY` and `GOOGLE_MAPS_API_KEY` in extension preferences via `about:addons`.
 2. Be on a website with one or more addresses.
